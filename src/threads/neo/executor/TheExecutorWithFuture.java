@@ -20,6 +20,7 @@ import java.util.concurrent.TimeoutException;
 public class TheExecutorWithFuture {
 
 	public static void main(String[] args) {
+		
 		ExecutorService executor = Executors.newFixedThreadPool(2);
 		
 		Future<String> fut1 = executor.submit(new Communicator1());
@@ -35,7 +36,6 @@ public class TheExecutorWithFuture {
 		try {
 			System.out.println(fut2.get(10, TimeUnit.SECONDS));
 		} catch (InterruptedException | ExecutionException | TimeoutException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			executor.shutdownNow();			

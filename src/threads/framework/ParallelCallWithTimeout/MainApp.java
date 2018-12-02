@@ -28,6 +28,8 @@ public class MainApp {
 		for(FrameworkCallableInterface<String, String> callableObj : callableObjlist) {
 			System.out.println(callableObj.getResult() +" : "+callableObj.getError());
 		}
+		
+		System.out.println("And then the main thread goes on....");
 	}
 
 }
