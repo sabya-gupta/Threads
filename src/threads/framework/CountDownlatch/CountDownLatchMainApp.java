@@ -73,6 +73,7 @@ class MyRESTCountDownlatchInterfaceImpl<Result, Input> extends CountDownlatchTas
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			this.setError(e.toString());
 		}
 		System.out.println("Completed the "+this.input);
 		this.result = (Result)(" Completed the "+this.input+ " >>> ");
@@ -97,6 +98,7 @@ class MySOAPCountDownlatchInterfaceImpl<Result, Input> extends CountDownlatchTas
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			this.setError(e.toString());
 		}
 		System.out.println("Completed the "+this.input);
 		this.result = (Result)(" Completed the "+this.input+ " >>> ");
@@ -121,6 +123,7 @@ class MyDBCountDownlatchInterfaceImpl<Result, Input> extends CountDownlatchTaskI
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			this.setError(e.toString());
 		}
 		System.out.println("Completed the "+this.input);
 		this.result = (Result)(" Completed the "+this.input+ " >>> ");
