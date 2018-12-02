@@ -8,7 +8,7 @@ package threads.old.threadpool;
  * 
  */
 
-public class ProducerConsumerWithLockMailClass {
+public class ProducerConsumerWithLockMainClass {
 
 	public static void main(String[] args) {
 		JobPoolWithLock tp = new JobPoolWithLock();
