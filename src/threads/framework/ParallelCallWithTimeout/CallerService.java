@@ -8,11 +8,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeoutException;
 
-public class CallerService {
+public class CallerService <ReturnType, InputType>{
 
 	int numberOfThreads=0;
 	
-	public <ReturnType, InputType> void doService(List<FrameworkCallableInterface<ReturnType, InputType>>
+	public void doService(List<FrameworkCallableInterface<ReturnType, InputType>>
 		callableObjectList) {
 		
 		ExecutorService executor = Executors.newFixedThreadPool(numberOfThreads);

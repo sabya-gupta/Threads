@@ -1,0 +1,9 @@
+I developed a framework for running parallel threads. 
+
+As far as I remember i implemented it in this way...
+
+1. We has this Interface for the callable object.
+
+2. Then we had the Call service.
+
+3. I have included a simple implementation for callable object.

@@ -21,7 +21,7 @@ public class MainApp {
 			callableObjlist.add(obj);
 		}
 		
-		CallerService cs = new CallerService();
+		CallerService<String, String> cs = new CallerService<String, String>();
 		cs.setNumberOfThreads(numOfJobs);
 		cs.doService(callableObjlist);
 		
