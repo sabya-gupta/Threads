@@ -145,6 +145,7 @@ class CyclicBarrierWorkerDB2StringImpl extends CyclicBarrierWorkerBase<String, S
 		System.out.println("IN DB2 AFTER AWAIT next input = " + this.nti);
 		// Now again call Rest to update result after reading from DB with the nti id
 		try {
+			//normally here  would prefer to put it into queues.
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
