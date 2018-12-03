@@ -16,5 +16,7 @@
  * do any number of parallel tasks which needs to be completed before proceeding with next task.
  * 
  * And of course You need to have the same kind of Input and result object
- *
+ * 
+ * Worker threads first bring in the data(do the job in parallel) run by Executor Service based on a countdown latch
+ * 
  */

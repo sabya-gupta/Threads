@@ -25,7 +25,7 @@ public class CyclicBarrierMain {
 		cb4.setInput("DB2 ");
 		listOfWorkers.add(cb4);
 
-		CyclicbarrierServiceWithStrings cbsws = new CyclicbarrierServiceWithStrings();
+		CyclicbarrierServiceInterfaceImplWithAllStrings cbsws = new CyclicbarrierServiceInterfaceImplWithAllStrings();
 		cbsws.dotask(listOfWorkers);
 
 	}

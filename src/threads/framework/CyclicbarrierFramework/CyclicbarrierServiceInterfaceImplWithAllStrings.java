@@ -5,7 +5,7 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class CyclicbarrierServiceWithStrings {
+public class CyclicbarrierServiceInterfaceImplWithAllStrings implements CyclicbarrierServiceInterface<String, String, String>{
 
 	List<CyclicBarrierWorkerInterface<String, String, String>> listOfWorkers;
 	

@@ -31,26 +31,26 @@ public class CountDownLatchMainApp {
 		List<CountDownLatchTaskInterface<String, String>> listOftask =  new ArrayList<>();
 
 		//First we define the tasks
-		MyRESTCountDownlatchInterfaceImpl<String, String> restTask = new MyRESTCountDownlatchInterfaceImpl<>();
+		CountDownlatchTaskInterfaceBase<String, String> restTask = new MyRESTCountDownlatchInterfaceImpl();
 		restTask.setInput("REST job");
 		listOftask.add(restTask);
 		
 		//Then the SOAP job
-		MySOAPCountDownlatchInterfaceImpl<String, String> soapTask = new MySOAPCountDownlatchInterfaceImpl<>();
+		CountDownlatchTaskInterfaceBase<String, String> soapTask = new MySOAPCountDownlatchInterfaceImpl();
 		soapTask.setInput("SOAP job");
 		listOftask.add(soapTask);
 		
 		//The two DB jobs
-		MyDBCountDownlatchInterfaceImpl<String, String> db1Task = new MyDBCountDownlatchInterfaceImpl<>();
+		CountDownlatchTaskInterfaceBase<String, String> db1Task = new MyDBCountDownlatchInterfaceImpl();
 		db1Task.setInput("DB1 job");
 		listOftask.add(db1Task);
 		
-		MyDBCountDownlatchInterfaceImpl<String, String> db2Task = new MyDBCountDownlatchInterfaceImpl<>();
+		CountDownlatchTaskInterfaceBase<String, String> db2Task = new MyDBCountDownlatchInterfaceImpl();
 		db2Task.setInput("DB2 job");
 		listOftask.add(db2Task);
 		
 		
-		CountDownLatchService<String, String, String> cdls = new CountDownLatchService<>();
+		CountDownLatchServiceInterface<String, String, String> cdls = new CountDownLatchServiceWithAllString();
 		String theFinalresult = cdls.dotask(listOftask);
 		
 		System.out.println("And in Main....");
@@ -65,7 +65,7 @@ public class CountDownLatchMainApp {
  * @param <Result>
  * @param <Input>
  */
-class MyRESTCountDownlatchInterfaceImpl<Result, Input> extends CountDownlatchTaskInterfaceBase<Result, Input>{
+class MyRESTCountDownlatchInterfaceImpl extends CountDownlatchTaskInterfaceBase<String, String>{
 	@Override
 	public void run() {
 		System.out.println("calling the rest service");
@@ -76,7 +76,7 @@ class MyRESTCountDownlatchInterfaceImpl<Result, Input> extends CountDownlatchTas
 			this.setError(e.toString());
 		}
 		System.out.println("Completed the "+this.input);
-		this.result = (Result)(" Completed the "+this.input+ " >>> ");
+		this.result = (" Completed the "+this.input+ " >>> ");
 		this.cdl.countDown();
 	}
 	
@@ -90,7 +90,7 @@ class MyRESTCountDownlatchInterfaceImpl<Result, Input> extends CountDownlatchTas
  * @param <Input>
  */
 
-class MySOAPCountDownlatchInterfaceImpl<Result, Input> extends CountDownlatchTaskInterfaceBase<Result, Input>{
+class MySOAPCountDownlatchInterfaceImpl extends CountDownlatchTaskInterfaceBase<String, String>{
 	@Override
 	public void run() {
 		System.out.println("calling the soap service");
@@ -101,7 +101,7 @@ class MySOAPCountDownlatchInterfaceImpl<Result, Input> extends CountDownlatchTas
 			this.setError(e.toString());
 		}
 		System.out.println("Completed the "+this.input);
-		this.result = (Result)(" Completed the "+this.input+ " >>> ");
+		this.result = (" Completed the "+this.input+ " >>> ");
 		this.cdl.countDown();
 	}
 	
@@ -115,7 +115,7 @@ class MySOAPCountDownlatchInterfaceImpl<Result, Input> extends CountDownlatchTas
  * @param <Input>
  */
 
-class MyDBCountDownlatchInterfaceImpl<Result, Input> extends CountDownlatchTaskInterfaceBase<Result, Input>{
+class MyDBCountDownlatchInterfaceImpl extends CountDownlatchTaskInterfaceBase<String, String>{
 	@Override
 	public void run() {
 		System.out.println("calling the db service");
@@ -126,7 +126,7 @@ class MyDBCountDownlatchInterfaceImpl<Result, Input> extends CountDownlatchTaskI
 			this.setError(e.toString());
 		}
 		System.out.println("Completed the "+this.input);
-		this.result = (Result)(" Completed the "+this.input+ " >>> ");
+		this.result = (" Completed the "+this.input+ " >>> ");
 		this.cdl.countDown();
 	}
 	

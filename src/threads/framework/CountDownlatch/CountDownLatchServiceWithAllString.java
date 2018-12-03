@@ -6,15 +6,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-public class CountDownLatchService<ResultOfThisclass, Result, Input> {
+public class CountDownLatchServiceWithAllString implements CountDownLatchServiceInterface<String, String, String> {
 
-	public ResultOfThisclass dotask(List<CountDownLatchTaskInterface<Result, Input>> taskList) {
+	public String dotask(List<CountDownLatchTaskInterface<String, String>> taskList) {
 		
 		CountDownLatch cdl = new CountDownLatch(taskList.size());
 		
 		ExecutorService executor = Executors.newFixedThreadPool(taskList.size());
 		
-		for(CountDownLatchTaskInterface<Result, Input> task : taskList) {
+		for(CountDownLatchTaskInterface<String, String> task : taskList) {
 			task.setlatch(cdl);
 			executor.execute(task);
 		}
@@ -31,7 +31,7 @@ public class CountDownLatchService<ResultOfThisclass, Result, Input> {
 		//collate the results:
 		String res = "";
 		System.out.println("Aggregating the result");
-		for(CountDownLatchTaskInterface<Result, Input> task : taskList) {
+		for(CountDownLatchTaskInterface<String, String> task : taskList) {
 			if(task.getError()==null)
 			res += task.getresult().toString();
 		}
@@ -39,7 +39,7 @@ public class CountDownLatchService<ResultOfThisclass, Result, Input> {
 		
 		executor.shutdown();
 		
-		return (ResultOfThisclass) res;
+		return res;
 		
 	}
 }
